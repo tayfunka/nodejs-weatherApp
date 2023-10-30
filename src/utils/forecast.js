@@ -1,7 +1,9 @@
 const request = require('request')
+require('dotenv').config()
+const WEATHERSTACK_KEY = process.env.WEATHERSTACK_KEY;
 
 const forecast = (longitude, latitude, callback) => {
-    const url = 'http://api.weatherstack.com/current?access_key=' + '292f537fea5497fd693453986bf3db75' + '&query=' + latitude + ',' + longitude + '&units=m'
+    const url = 'http://api.weatherstack.com/current?access_key=' + WEATHERSTACK_KEY + '&query=' + latitude + ',' + longitude + '&units=m'
     request({ url, json: true }, (error, { body }) => { // (error, response) = callback
         if (error) {
             callback('Unable to connet to location services!', undefined)
